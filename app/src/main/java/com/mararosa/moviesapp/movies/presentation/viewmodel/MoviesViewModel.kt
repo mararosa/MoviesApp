@@ -1,5 +1,6 @@
 package com.mararosa.moviesapp.movies.presentation.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -26,19 +27,19 @@ class MoviesViewModel @Inject constructor(
     }
 
     private fun fetchPopularmovies() {
-//        viewModelScope.launch {
-//            try {
-//                val popularMovies = interactor.fetchPopularMovies()
-//                _movies.value = popularMovies
-//                Log.d("MoviesViewModel", "Response: $popularMovies")
-//            } catch (e: Exception) {
-//                Log.e("MoviesViewModel", "Error fetching popular movies: ${e.message}")
-//                _error.value = e.message
-//            }
-//        }
-
         viewModelScope.launch {
-            _movies.value = interactor.fetchPopularMovies()
+            try {
+                val popularMovies = interactor.fetchPopularMovies()
+                _movies.value = popularMovies
+                Log.d("MoviesViewModel", "Response: $popularMovies")
+            } catch (e: Exception) {
+                Log.e("MoviesViewModel", "Error fetching popular movies: ${e.message}")
+                _error.value = e.message
+            }
         }
+
+//        viewModelScope.launch {
+//            _movies.value = interactor.fetchPopularMovies()
+//        }
     }
 }

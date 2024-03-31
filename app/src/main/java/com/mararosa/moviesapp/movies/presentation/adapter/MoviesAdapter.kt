@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mararosa.moviesapp.databinding.ViewMoviesItemBinding
 import com.mararosa.moviesapp.movies.domain.MovieVO
+import com.mararosa.moviesapp.util.Constants
 import com.squareup.picasso.Picasso
 
 class MoviesAdapter(
@@ -33,9 +34,8 @@ class MoviesAdapter(
         fun bind(movie: MovieVO) {
             binding.textViewMovieTitle.text = movie.title
             Picasso.get()
-                .load(movie.poster)
+                .load("${Constants.IMAGE_URL}${movie.poster}")
                 .into(binding.imageViewMoviesItem)
         }
-
     }
 }
