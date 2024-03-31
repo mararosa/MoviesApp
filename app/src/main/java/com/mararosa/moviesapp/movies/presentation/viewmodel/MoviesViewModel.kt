@@ -3,43 +3,40 @@ package com.mararosa.moviesapp.movies.presentation.viewmodel
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mararosa.moviesapp.movies.domain.MovieVO
 import com.mararosa.moviesapp.movies.domain.interactor.MoviesInteractor
-import com.mararosa.moviesapp.util.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class MoviesViewModel @Inject constructor(
     private val interactor: MoviesInteractor
-) : BaseViewModel() {
+) : ViewModel() {
 
-    private val _movies = MutableLiveData<List<MovieVO>>()
-    val movies: LiveData<List<MovieVO>> = _movies
-
-    private val _error = MutableLiveData<String>()
-    val error: LiveData<String> = _error
+    private val _state = MutableLiveData<MoviesViewModelState>()
+    val state: LiveData<MoviesViewModelState> = _state
 
     init {
-        fetchPopularmovies()
+        fetchPopularMovies()
     }
 
-    private fun fetchPopularmovies() {
+    private fun fetchPopularMovies() {
         viewModelScope.launch {
+            _state.value = MoviesViewModelState.Loading
             try {
                 val popularMovies = interactor.fetchPopularMovies()
-                _movies.value = popularMovies
-                Log.d("MoviesViewModel", "Response: $popularMovies")
+                _state.value = MoviesViewModelState.Success(popularMovies)
             } catch (e: Exception) {
                 Log.e("MoviesViewModel", "Error fetching popular movies: ${e.message}")
-                _error.value = e.message
+                _state.value = MoviesViewModelState.Error
             }
         }
+    }
 
-//        viewModelScope.launch {
-//            _movies.value = interactor.fetchPopularMovies()
-//        }
+    fun tryAgain() {
+        fetchPopularMovies()
     }
 }

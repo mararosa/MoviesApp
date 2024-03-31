@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MoviesApp</string>
+    <string name="button_error_retry">Retry</string>
+    <string name="error_message">Results could not be loaded</string>
 </resources>
