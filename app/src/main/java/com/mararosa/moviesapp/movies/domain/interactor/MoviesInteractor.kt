@@ -14,16 +14,9 @@ class MoviesInteractorImpl @Inject constructor(
     private val repository: MoviesRepository
 ) : MoviesInteractor {
 
-    override suspend fun fetchPopularMovies(): List<MovieVO> =
-//        repository.fetchPopularMovies()?.toMovieListVO().orEmpty()
-listOf(
-    MovieVO(id = 1, title = "Movie 1", poster = "posterPath 1"),
-    MovieVO(id = 1, title = "Movie 1", poster = "posterPath 1"),
-    MovieVO(id = 1, title = "Movie 1", poster = "posterPath 1"),
-    MovieVO(id = 1, title = "Movie 1", poster = "posterPath 1"),
-    MovieVO(id = 1, title = "Movie 1", poster = "posterPath 1"),
-    MovieVO(id = 1, title = "Movie 1", poster = "posterPath 1"),
-    MovieVO(id = 1, title = "Movie 1", poster = "posterPath 1")
-)
+    override suspend fun fetchPopularMovies(): List<MovieVO> {
+        return repository.fetchPopularMovies()?.toMovieListVO() ?: emptyList()
+    }
+
 
 }

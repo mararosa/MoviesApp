@@ -12,7 +12,7 @@ fun List<MovieData>.toMovieListVO(): List<MovieVO> {
 fun MovieData.toMovieVO(): MovieVO {
     return MovieVO(
         id = id,
-        poster = poster_path.orEmpty(),
-        title = original_title.orEmpty()
+        poster = posterPath.orEmpty(),
+        title = title.orEmpty()
     )
 }

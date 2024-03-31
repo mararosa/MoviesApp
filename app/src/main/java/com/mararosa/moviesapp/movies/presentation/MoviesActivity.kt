@@ -29,7 +29,6 @@ class MoviesActivity : AppCompatActivity() {
                     vm = viewModel
                 }
 
-        viewModel.fetchPopularmovies()
         setupObservers()
     }
 

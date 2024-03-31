@@ -3,7 +3,6 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.jetbrainsKotlinKapt)
     alias(libs.plugins.hiltAndroid)
-
 }
 
 android {
@@ -19,6 +18,8 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
+        buildConfigField("String", "API_KEY", "\"${project.property("API_KEY")}\"")
+
         buildFeatures {
             buildConfig = true
         }
@@ -31,7 +32,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            buildConfigField("String", "API_KEY", "\"${property("API_KEY")}\"")
         }
     }
     compileOptions {
@@ -81,6 +81,7 @@ dependencies {
 
     //Moshi
     implementation(libs.moshi.kotlin)
+    implementation(libs.moshi)
 
     // Picasso
     implementation(libs.picasso)

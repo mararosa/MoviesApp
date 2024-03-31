@@ -7,6 +7,7 @@ import com.mararosa.moviesapp.movies.domain.interactor.MoviesInteractorImpl
 import com.mararosa.moviesapp.movies.service.MoviesService
 import com.mararosa.moviesapp.util.Constants
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,8 +22,10 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideMoshy(): Moshi {
-        return Moshi.Builder().build()
+    fun provideMoshi(): Moshi {
+        return Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
     }
 
     @Provides
