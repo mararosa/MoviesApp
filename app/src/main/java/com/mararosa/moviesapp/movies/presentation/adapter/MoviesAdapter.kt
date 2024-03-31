@@ -1,11 +1,11 @@
 package com.mararosa.moviesapp.movies.presentation.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mararosa.moviesapp.databinding.ViewMoviesItemBinding
-import com.mararosa.moviesapp.movies.data.model.MovieVO
+import com.mararosa.moviesapp.movies.domain.MovieVO
+import com.squareup.picasso.Picasso
 
 class MoviesAdapter(
     private val movies: List<MovieVO>,
@@ -32,7 +32,9 @@ class MoviesAdapter(
 
         fun bind(movie: MovieVO) {
             binding.textViewMovieTitle.text = movie.title
-            binding.imageViewMoviesItem.setImageResource(movie.poster)
+            Picasso.get()
+                .load(movie.poster)
+                .into(binding.imageViewMoviesItem)
         }
 
     }

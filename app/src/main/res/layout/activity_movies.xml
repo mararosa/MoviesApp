@@ -3,8 +3,8 @@
 
     <data>
         <variable
-            name="vo"
-            type="com.mararosa.moviesapp.movies.data.model.MovieVO" />
+            name="vm"
+            type="com.mararosa.moviesapp.movies.presentation.viewmodel.MoviesViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

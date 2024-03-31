@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.jetbrainsKotlinKapt)
+    alias(libs.plugins.hiltAndroid)
 
 }
 
@@ -17,8 +18,12 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
 
+        buildFeatures {
+            buildConfig = true
+        }
+
+    }
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -26,6 +31,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "API_KEY", "\"${property("API_KEY")}\"")
         }
     }
     compileOptions {
@@ -52,16 +58,26 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+
     // ViewModel and LiveData
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.lifecycle.livedata.ktx)
+
 
     // Dagger Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
+    // For instrumentation tests
+    androidTestImplementation  (libs.hilt.android.testing)
+    kaptAndroidTest (libs.hilt.compiler)
+    // For local unit tests
+    testImplementation (libs.hilt.android.testing)
+    kaptTest (libs.hilt.compiler)
 
     // Retrofit
     implementation(libs.retrofit)
+    implementation(libs.converter.moshi)
 
     //Moshi
     implementation(libs.moshi.kotlin)
@@ -76,3 +92,4 @@ kapt {
     correctErrorTypes = true
 
 }
+
