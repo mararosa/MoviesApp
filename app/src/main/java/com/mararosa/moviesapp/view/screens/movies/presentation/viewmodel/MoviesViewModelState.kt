@@ -1,6 +1,6 @@
-package com.mararosa.moviesapp.movies.presentation.viewmodel
+package com.mararosa.moviesapp.view.screens.movies.presentation.viewmodel
 
-import com.mararosa.moviesapp.movies.domain.MovieVO
+import com.mararosa.moviesapp.view.screens.movies.domain.MovieVO
 
 sealed class MoviesViewModelState {
     object Loading : MoviesViewModelState()

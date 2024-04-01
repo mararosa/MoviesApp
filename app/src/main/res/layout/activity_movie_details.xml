@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<!--    <data>-->
+
+<!--        <variable-->
+<!--            name="vm"-->
+<!--            type="//TODO()" />-->
+
+<!--    </data>-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageViewDetailsPoster"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/movies_item_image_height" />
+
+        <View
+            android:id="@+id/viewDetails"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/movies_item_view_height"
+            android:layout_alignBottom="@+id/imageViewDetailsPoster"
+            android:background="@drawable/gradient" />
+
+        <TextView
+            android:id="@+id/textViewDetailsPopularity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/imageViewDetailsPoster"
+            android:layout_margin="@dimen/space_8"
+            android:drawablePadding="@dimen/space_4"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            app:drawableStartCompat="@drawable/ic_popular_movies"
+            tools:text="68%" />
+
+        <TextView
+            android:id="@+id/textViewDetailsOverview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewDetailsPopularity"
+            android:layout_margin="@dimen/space_16"
+            tools:text="sadkjhkjahjfhsajkhfjkashjhjsahfjhsdajhdjkhkjdhskajsakjhfsahkjshdakjhjkfdha" />
+
+    </RelativeLayout>
+
+</layout>

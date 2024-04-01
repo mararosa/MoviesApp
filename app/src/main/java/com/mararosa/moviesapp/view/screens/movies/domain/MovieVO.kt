@@ -1,6 +1,4 @@
-package com.mararosa.moviesapp.movies.domain
-
-import android.widget.ImageView
+package com.mararosa.moviesapp.view.screens.movies.domain
 
 data class MovieVO(
     val id: Int,

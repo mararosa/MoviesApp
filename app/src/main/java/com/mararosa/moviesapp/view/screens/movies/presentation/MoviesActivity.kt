@@ -1,5 +1,6 @@
-package com.mararosa.moviesapp.movies.presentation
+package com.mararosa.moviesapp.view.screens.movies.presentation
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -8,10 +9,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.mararosa.moviesapp.R
 import com.mararosa.moviesapp.databinding.ActivityMoviesBinding
-import com.mararosa.moviesapp.movies.domain.MovieVO
-import com.mararosa.moviesapp.movies.presentation.adapter.MoviesAdapter
-import com.mararosa.moviesapp.movies.presentation.viewmodel.MoviesViewModel
-import com.mararosa.moviesapp.movies.presentation.viewmodel.MoviesViewModelState
+import com.mararosa.moviesapp.view.screens.details.presentation.DetailsActivity
+import com.mararosa.moviesapp.view.screens.movies.domain.MovieVO
+import com.mararosa.moviesapp.view.screens.movies.presentation.adapter.MoviesAdapter
+import com.mararosa.moviesapp.view.screens.movies.presentation.viewmodel.MoviesViewModel
+import com.mararosa.moviesapp.view.screens.movies.presentation.viewmodel.MoviesViewModelState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -63,8 +65,10 @@ class MoviesActivity : AppCompatActivity() {
         }
     }
 
-    private fun showMovies(movies: List<MovieVO>) {
-        moviesAdapter = MoviesAdapter(movies)
+    private fun showMovies(movieList: List<MovieVO>) {
+        moviesAdapter = MoviesAdapter(movieList) { movieId ->
+            openDetailsActivity(movieId)
+        }
         with(binding) {
             recyclerViewMovies.adapter = moviesAdapter
             recyclerViewMovies.visibility = android.view.View.VISIBLE
@@ -73,6 +77,12 @@ class MoviesActivity : AppCompatActivity() {
             buttonErrorRetry.visibility = android.view.View.GONE
         }
 
+    }
+
+    private fun openDetailsActivity(movieId: Int) {
+        val intent = Intent(this, DetailsActivity::class.java)
+        intent.putExtra("movieId", movieId)
+        startActivity(intent)
     }
 
     private fun setupListeners() {

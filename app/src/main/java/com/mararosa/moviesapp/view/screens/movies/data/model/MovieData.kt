@@ -1,4 +1,4 @@
-package com.mararosa.moviesapp.movies.data.model
+package com.mararosa.moviesapp.view.screens.movies.data.model
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

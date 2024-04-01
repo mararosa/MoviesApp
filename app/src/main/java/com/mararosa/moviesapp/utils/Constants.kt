@@ -1,4 +1,4 @@
-package com.mararosa.moviesapp.util
+package com.mararosa.moviesapp.utils
 
 import com.mararosa.moviesapp.BuildConfig
 

@@ -1,11 +1,11 @@
-package com.mararosa.moviesapp.movies.presentation.viewmodel
+package com.mararosa.moviesapp.view.screens.movies.presentation.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mararosa.moviesapp.movies.domain.interactor.MoviesInteractor
+import com.mararosa.moviesapp.view.screens.movies.domain.interactor.MoviesInteractor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

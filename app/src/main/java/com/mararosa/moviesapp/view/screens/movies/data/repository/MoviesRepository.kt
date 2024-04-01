@@ -1,8 +1,8 @@
-package com.mararosa.moviesapp.movies.data.repository
+package com.mararosa.moviesapp.view.screens.movies.data.repository
 
 import android.util.Log
-import com.mararosa.moviesapp.movies.data.model.MovieData
-import com.mararosa.moviesapp.movies.service.MoviesService
+import com.mararosa.moviesapp.view.screens.movies.data.model.MovieData
+import com.mararosa.moviesapp.service.MoviesService
 import javax.inject.Inject
 
 interface MoviesRepository {

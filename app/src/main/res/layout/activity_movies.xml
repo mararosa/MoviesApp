@@ -7,14 +7,14 @@
 
         <variable
             name="vm"
-            type="com.mararosa.moviesapp.movies.presentation.viewmodel.MoviesViewModel" />
+            type="com.mararosa.moviesapp.view.screens.movies.presentation.viewmodel.MoviesViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".movies.presentation.MoviesActivity">
+        tools:context=".view.screens.movies.presentation.MoviesActivity">
 
         <ProgressBar
             android:id="@+id/progressBarMovies"
@@ -30,7 +30,7 @@
             android:id="@+id/textViewError"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="288dp"
+            android:layout_marginTop="@dimen/movies_error_margin_top"
             android:text="@string/error_message"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"

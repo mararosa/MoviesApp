@@ -1,9 +1,9 @@
-package com.mararosa.moviesapp.movies.domain.interactor
+package com.mararosa.moviesapp.view.screens.movies.domain.interactor
 
-import com.mararosa.moviesapp.movies.data.repository.MoviesRepository
-import com.mararosa.moviesapp.movies.domain.MovieVO
-import com.mararosa.moviesapp.movies.domain.mapper.toMovieListVO
-import com.mararosa.moviesapp.movies.domain.mapper.toMovieVO
+import com.mararosa.moviesapp.view.screens.movies.data.repository.MoviesRepository
+import com.mararosa.moviesapp.view.screens.movies.domain.MovieVO
+import com.mararosa.moviesapp.view.screens.movies.domain.mapper.toMovieListVO
+import com.mararosa.moviesapp.view.screens.movies.domain.mapper.toMovieVO
 import javax.inject.Inject
 
 interface MoviesInteractor {

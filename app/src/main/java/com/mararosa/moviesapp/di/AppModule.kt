@@ -1,11 +1,11 @@
 package com.mararosa.moviesapp.di
 
-import com.mararosa.moviesapp.movies.data.repository.MoviesRepository
-import com.mararosa.moviesapp.movies.data.repository.MoviesRepositoryImpl
-import com.mararosa.moviesapp.movies.domain.interactor.MoviesInteractor
-import com.mararosa.moviesapp.movies.domain.interactor.MoviesInteractorImpl
-import com.mararosa.moviesapp.movies.service.MoviesService
-import com.mararosa.moviesapp.util.Constants
+import com.mararosa.moviesapp.view.screens.movies.data.repository.MoviesRepository
+import com.mararosa.moviesapp.view.screens.movies.data.repository.MoviesRepositoryImpl
+import com.mararosa.moviesapp.view.screens.movies.domain.interactor.MoviesInteractor
+import com.mararosa.moviesapp.view.screens.movies.domain.interactor.MoviesInteractorImpl
+import com.mararosa.moviesapp.service.MoviesService
+import com.mararosa.moviesapp.utils.Constants
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -19,29 +19,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-
-    @Provides
-    @Singleton
-    fun provideMoshi(): Moshi {
-        return Moshi.Builder()
-            .add(KotlinJsonAdapterFactory())
-            .build()
-    }
-
-    @Provides
-    @Singleton
-    fun provideRetrofit(moshi: Moshi): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl(Constants.BASE_URL)
-            .addConverterFactory(MoshiConverterFactory.create(moshi))
-            .build()
-    }
-
-    @Provides
-    @Singleton
-    fun provideMoviesService(retrofit: Retrofit): MoviesService {
-        return retrofit.create(MoviesService::class.java)
-    }
 
     @Provides
     @Singleton

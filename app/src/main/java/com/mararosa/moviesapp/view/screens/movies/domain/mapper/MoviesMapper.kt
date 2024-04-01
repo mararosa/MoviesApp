@@ -1,7 +1,7 @@
-package com.mararosa.moviesapp.movies.domain.mapper
+package com.mararosa.moviesapp.view.screens.movies.domain.mapper
 
-import com.mararosa.moviesapp.movies.data.model.MovieData
-import com.mararosa.moviesapp.movies.domain.MovieVO
+import com.mararosa.moviesapp.view.screens.movies.data.model.MovieData
+import com.mararosa.moviesapp.view.screens.movies.domain.MovieVO
 
 fun List<MovieData>.toMovieListVO(): List<MovieVO> {
     return map {
