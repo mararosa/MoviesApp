@@ -11,4 +11,5 @@ data class SimilarMovieVO(
     val overview: String,
     val ratePopularity: String,
     val backdropImage: String,
+    val releaseDate: String
 ) : Parcelable

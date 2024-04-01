@@ -1,17 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tv_similar"
-            android:layout_width="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/imageViewSimilarMovie"
+            android:layout_width="@dimen/similar_movies_image_width"
+            android:layout_height="@dimen/similar_movies_image_height"
+            android:layout_margin="@dimen/space_16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/textViewSimilarMovieTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imageViewSimilarMovie"
+            app:layout_constraintTop_toTopOf="@id/imageViewSimilarMovie"
+            tools:text="Lorem ipsum" />
+
+        <TextView
+            android:id="@+id/textViewSimilarMovieReleaseDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/textViewSimilarMovieTitle"
+            app:layout_constraintTop_toBottomOf="@id/textViewSimilarMovieTitle"
+            tools:text="2021-01-01" />
+
+        <TextView
+            android:id="@+id/textViewSimilarMovieOverview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageViewSimilarMovie"
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec odio." />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

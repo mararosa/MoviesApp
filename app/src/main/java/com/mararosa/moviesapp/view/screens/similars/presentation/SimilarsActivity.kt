@@ -7,8 +7,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.mararosa.moviesapp.R
 import com.mararosa.moviesapp.databinding.ActivitySimilarsBinding
+import com.mararosa.moviesapp.utils.Constants
+import com.mararosa.moviesapp.view.screens.similars.domain.SimilarMovieVO
 import com.mararosa.moviesapp.view.screens.similars.presentation.viewmodel.SimilarsViewModel
 import com.mararosa.moviesapp.view.screens.similars.presentation.viewmodel.SimilarsViewModelState
+import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,7 +33,7 @@ class SimilarsActivity : AppCompatActivity() {
         viewModel.state.observe(this, Observer { state ->
             when (state) {
                 is SimilarsViewModelState.Success -> {
-                    bindind.tvSimilar.text = state.movie.title
+                    showSimilarMovies(state.movie)
                 }
 
                 is SimilarsViewModelState.Error -> {
@@ -38,6 +41,18 @@ class SimilarsActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    private fun showSimilarMovies(movie: SimilarMovieVO) {
+        with(bindind) {
+            textViewSimilarMovieTitle.text = movie.title
+            textViewSimilarMovieOverview.text = movie.overview
+            textViewSimilarMovieReleaseDate.text = movie.releaseDate
+            Picasso.get()
+                .load(Constants.IMAGE_URL + movie.poster)
+                .into(imageViewSimilarMovie)
+        }
+
     }
 
 

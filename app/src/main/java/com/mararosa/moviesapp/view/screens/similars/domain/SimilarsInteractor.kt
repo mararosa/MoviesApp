@@ -12,6 +12,7 @@ class SimilarsInteractorImpl @Inject constructor(
     private val repository: SimilarsRepository
 ) : SimilarsInteractor {
     override suspend fun fetchSimilarMovies(id: Int): List<SimilarMovieVO> {
+        //TODo: Create a mapper to convert the list of SimilarMovieData to a list of SimilarMovieVO
         return repository.fetchSimilarMovies(id)?.map {
             SimilarMovieVO(
                 id = it.id ?: -1,
@@ -19,7 +20,8 @@ class SimilarsInteractorImpl @Inject constructor(
                 title = it.title.orEmpty(),
                 overview = it.overview.orEmpty(),
                 ratePopularity = it.voteAverage.toDecimalPlaces(),
-                backdropImage = it.backdropPath.orEmpty()
+                backdropImage = it.backdropPath.orEmpty(),
+                releaseDate = it.releaseDate.orEmpty()
             )
         } ?: emptyList()
     }

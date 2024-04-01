@@ -13,6 +13,8 @@
     <dimen name="movies_item_image_width">180dp</dimen>
     <dimen name="movies_item_view_height">40dp</dimen>
     <dimen name="movies_error_margin_top">300dp</dimen>
+    <dimen name="similar_movies_image_height">200dp</dimen>
+    <dimen name="similar_movies_image_width">150dp</dimen>
 
 
     <dimen name="space_4">4dp</dimen>

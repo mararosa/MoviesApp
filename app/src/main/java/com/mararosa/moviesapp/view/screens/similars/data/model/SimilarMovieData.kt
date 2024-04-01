@@ -11,5 +11,6 @@ data class SimilarMovieData(
     @Json(name = "overview") val overview: String? = null,
     @Json(name = "poster_path") val posterPath: String? = null,
     @Json(name = "title") val title: String? = null,
-    @Json(name = "vote_average") val voteAverage: Double? = null
+    @Json(name = "vote_average") val voteAverage: Double? = null,
+    @Json(name = "release_date") val releaseDate: String? = null
 )
