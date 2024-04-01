@@ -28,6 +28,7 @@
 
         <activity android:name=".view.screens.movies.presentation.MoviesActivity" />
         <activity android:name=".view.screens.details.presentation.DetailsActivity" />
+        <activity android:name=".view.screens.similars.presentation.SimilarsActivity" />
     </application>
 
 </manifest>

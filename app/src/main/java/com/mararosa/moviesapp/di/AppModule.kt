@@ -5,15 +5,14 @@ import com.mararosa.moviesapp.view.screens.movies.data.repository.MoviesReposito
 import com.mararosa.moviesapp.view.screens.movies.domain.interactor.MoviesInteractor
 import com.mararosa.moviesapp.view.screens.movies.domain.interactor.MoviesInteractorImpl
 import com.mararosa.moviesapp.service.MoviesService
-import com.mararosa.moviesapp.utils.Constants
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import com.mararosa.moviesapp.view.screens.similars.data.SimilarsRepository
+import com.mararosa.moviesapp.view.screens.similars.data.SimilarsRepositoryImpl
+import com.mararosa.moviesapp.view.screens.similars.domain.SimilarsInteractor
+import com.mararosa.moviesapp.view.screens.similars.domain.SimilarsInteractorImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
 @Module
@@ -30,5 +29,17 @@ object AppModule {
     @Singleton
     fun provideMoviesInteractor(repository: MoviesRepository): MoviesInteractor {
         return MoviesInteractorImpl(repository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSimilarsRepository(moviesService: MoviesService): SimilarsRepository {
+        return SimilarsRepositoryImpl(moviesService)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSimilarsInteractor(repository: SimilarsRepository): SimilarsInteractor {
+        return SimilarsInteractorImpl(repository)
     }
 }
