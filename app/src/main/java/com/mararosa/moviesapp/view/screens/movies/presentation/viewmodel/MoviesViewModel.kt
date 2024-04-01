@@ -5,9 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.mararosa.moviesapp.view.screens.movies.domain.MovieVO
 import com.mararosa.moviesapp.view.screens.movies.domain.interactor.MoviesInteractor
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -18,6 +18,8 @@ class MoviesViewModel @Inject constructor(
 
     private val _state = MutableLiveData<MoviesViewModelState>()
     val state: LiveData<MoviesViewModelState> = _state
+    private val _events = MutableLiveData<MoviesViewModelEvent>()
+    val events: LiveData<MoviesViewModelEvent> = _events
 
     init {
         fetchPopularMovies()
@@ -38,5 +40,9 @@ class MoviesViewModel @Inject constructor(
 
     fun tryAgain() {
         fetchPopularMovies()
+    }
+
+    fun onMovieClicked(movieVO: MovieVO) {
+        _events.value = MoviesViewModelEvent.NavigateToDetails(movieVO)
     }
 }

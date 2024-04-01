@@ -27,6 +27,7 @@
         </activity>
 
         <activity android:name=".view.screens.movies.presentation.MoviesActivity" />
+        <activity android:name=".view.screens.details.presentation.DetailsActivity" />
     </application>
 
 </manifest>

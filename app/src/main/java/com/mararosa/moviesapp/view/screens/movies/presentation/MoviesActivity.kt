@@ -13,6 +13,7 @@ import com.mararosa.moviesapp.view.screens.details.presentation.DetailsActivity
 import com.mararosa.moviesapp.view.screens.movies.domain.MovieVO
 import com.mararosa.moviesapp.view.screens.movies.presentation.adapter.MoviesAdapter
 import com.mararosa.moviesapp.view.screens.movies.presentation.viewmodel.MoviesViewModel
+import com.mararosa.moviesapp.view.screens.movies.presentation.viewmodel.MoviesViewModelEvent
 import com.mararosa.moviesapp.view.screens.movies.presentation.viewmodel.MoviesViewModelState
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -45,6 +46,17 @@ class MoviesActivity : AppCompatActivity() {
                 is MoviesViewModelState.Loading -> showLoading()
             }
         })
+        viewModel.events.observe(this, Observer { event ->
+            when (event) {
+                is MoviesViewModelEvent.NavigateToDetails -> openMovieDetails(event.movie)
+            }
+        })
+    }
+
+    private fun openMovieDetails(movie: MovieVO) {
+        val intent = Intent(this, DetailsActivity::class.java)
+        intent.putExtra("movie", movie)
+        startActivity(intent)
     }
 
     private fun showLoading() {
@@ -66,8 +78,8 @@ class MoviesActivity : AppCompatActivity() {
     }
 
     private fun showMovies(movieList: List<MovieVO>) {
-        moviesAdapter = MoviesAdapter(movieList) { movieId ->
-            openDetailsActivity(movieId)
+        moviesAdapter = MoviesAdapter(movieList) { movieVO ->
+            viewModel.onMovieClicked(movieVO)
         }
         with(binding) {
             recyclerViewMovies.adapter = moviesAdapter
@@ -77,12 +89,6 @@ class MoviesActivity : AppCompatActivity() {
             buttonErrorRetry.visibility = android.view.View.GONE
         }
 
-    }
-
-    private fun openDetailsActivity(movieId: Int) {
-        val intent = Intent(this, DetailsActivity::class.java)
-        intent.putExtra("movieId", movieId)
-        startActivity(intent)
     }
 
     private fun setupListeners() {

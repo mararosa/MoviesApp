@@ -10,7 +10,7 @@ import com.squareup.picasso.Picasso
 
 class MoviesAdapter(
     private val movies: List<MovieVO>,
-    private val onClick: (Int) -> Unit
+    private val onClick: (MovieVO) -> Unit
 ) : RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
@@ -23,7 +23,7 @@ class MoviesAdapter(
         val movie = movies[position]
         holder.bind(movie)
         holder.itemView.setOnClickListener {
-            onClick(movie.id)
+            onClick(movie)
         }
     }
 

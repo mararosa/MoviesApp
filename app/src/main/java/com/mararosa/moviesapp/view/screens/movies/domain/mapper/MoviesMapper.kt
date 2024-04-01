@@ -13,6 +13,16 @@ fun MovieData.toMovieVO(): MovieVO {
     return MovieVO(
         id = id,
         poster = posterPath.orEmpty(),
-        title = title.orEmpty()
+        title = title.orEmpty(),
+        overview = overview.orEmpty(),
+        ratePopularity = voteAverage.toDecimalPlaces(),
+        backdropImage = backdropPath.orEmpty()
     )
+}
+
+fun Double?.toDecimalPlaces(): String {
+    return this?.let {
+        String.format("%.2f", it)
+    } ?: "0.0"
+
 }

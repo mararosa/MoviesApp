@@ -3,20 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-<!--    <data>-->
+    <data>
 
-<!--        <variable-->
-<!--            name="vm"-->
-<!--            type="//TODO()" />-->
+        <variable
+            name="vo"
+            type="com.mararosa.moviesapp.view.screens.movies.domain.MovieVO" />
 
-<!--    </data>-->
+    </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imageViewDetailsPoster"
+            android:id="@+id/imageViewDetailsBackdrop"
             android:layout_width="match_parent"
             android:layout_height="@dimen/movies_item_image_height" />
 
@@ -24,22 +24,23 @@
             android:id="@+id/viewDetails"
             android:layout_width="match_parent"
             android:layout_height="@dimen/movies_item_view_height"
-            android:layout_alignBottom="@+id/imageViewDetailsPoster"
+            android:layout_alignBottom="@+id/imageViewDetailsBackdrop"
             android:background="@drawable/gradient" />
 
         <TextView
             android:id="@+id/textViewDetailsPopularity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/imageViewDetailsPoster"
+            android:layout_alignBottom="@id/imageViewDetailsBackdrop"
             android:layout_margin="@dimen/space_8"
             android:drawablePadding="@dimen/space_4"
             android:ellipsize="end"
             android:gravity="center_vertical"
             android:maxLines="1"
+            android:text="@{vo.ratePopularity}"
             android:textColor="@color/white"
             app:drawableStartCompat="@drawable/ic_popular_movies"
-            tools:text="68%" />
+            tools:text="6" />
 
         <TextView
             android:id="@+id/textViewDetailsOverview"
@@ -47,6 +48,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/textViewDetailsPopularity"
             android:layout_margin="@dimen/space_16"
+            android:text="@{vo.overview}"
+            android:textSize="@dimen/text_size_16sp"
             tools:text="sadkjhkjahjfhsajkhfjkashjhjsahfjhsdajhdjkhkjdhskajsakjhfsahkjshdakjhjkfdha" />
 
     </RelativeLayout>
