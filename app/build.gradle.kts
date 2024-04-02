@@ -59,18 +59,14 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation (libs.kotlinx.serialization.json)
-
     // Navigation Component
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
-
 
     // ViewModel and LiveData
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.lifecycle.livedata.ktx)
-
 
     // Dagger Hilt
     implementation(libs.hilt.android)
@@ -86,9 +82,16 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.converter.moshi)
 
+    // Kotlin Serialization
+    implementation (libs.kotlinx.serialization.json)
+
     //Moshi
     implementation(libs.moshi.kotlin)
     implementation(libs.moshi)
+
+    // OkHttp
+    implementation (libs.okhttp)
+
 
     // Picasso
     implementation(libs.picasso)
